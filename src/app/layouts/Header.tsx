@@ -1,4 +1,4 @@
-import {Outlet} from 'react-router-dom'
+import {Outlet, useLocation} from 'react-router-dom'
 import styled from 'styled-components'
 import TabBar from 'app/layouts/TabBar.tsx'
 
@@ -9,11 +9,16 @@ interface HeaderProps {
 }
 
 function Header({logoSrc, title, subtitle}: HeaderProps) {
+    const location = useLocation()
+
     return (
         <>
             <Container>
                 <Wrapper>
-                    <LogoImg src={logoSrc} alt="logo" />
+                    <div>
+                        <LogoImg src={logoSrc} alt="logo" />
+                        {location.pathname === '/' && <LogoImg src={'/images/logo_text.svg'} />}
+                    </div>
                     <TitleWrapper>
                         <Title>{title}</Title>
                         <SubTitle>{subtitle}</SubTitle>

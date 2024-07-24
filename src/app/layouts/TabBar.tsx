@@ -7,19 +7,19 @@ const TabBar: React.FC = () => {
 
     return (
         <NavContainer>
-            <StyledNavLink to="/" isActive={location.pathname === '/'}>
+            <StyledNavLink to="/" $isActive={location.pathname === '/'}>
                 홈
             </StyledNavLink>
-            <StyledNavLink to="/simplification" isActive={location.pathname.startsWith('/simplification')}>
+            <StyledNavLink to="/simplification" $isActive={location.pathname.startsWith('/simplification')}>
                 글 맞추기
             </StyledNavLink>
-            <StyledNavLink to="/contact" isActive={location.pathname === '/contact'}>
+            <StyledNavLink to="/contact" $isActive={location.pathname === '/contact'}>
                 글맞춤 도서관
             </StyledNavLink>
-            <StyledNavLink to="/contact/request" isActive={location.pathname === '/contact/request'}>
+            <StyledNavLink to="/contact/request" $isActive={location.pathname === '/contact/request'}>
                 글맞춤 부탁하기
             </StyledNavLink>
-            <StyledNavLink to="/profile" isActive={location.pathname === '/profile'}>
+            <StyledNavLink to="/profile" $isActive={location.pathname === '/profile'}>
                 나의 정보
             </StyledNavLink>
         </NavContainer>
@@ -35,7 +35,7 @@ const NavContainer = styled.nav`
 `
 
 interface StyledNavLinkProps {
-    isActive: boolean
+    $isActive: boolean
 }
 
 const StyledNavLink = styled(NavLink)<StyledNavLinkProps>`
@@ -47,8 +47,8 @@ const StyledNavLink = styled(NavLink)<StyledNavLinkProps>`
     position: relative;
     padding-bottom: 10px; // Ensure enough space for the underline
 
-    ${({isActive, theme}) =>
-        isActive &&
+    ${({$isActive, theme}) =>
+        $isActive &&
         css`
             &::after {
                 content: '';
